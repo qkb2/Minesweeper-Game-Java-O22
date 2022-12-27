@@ -14,8 +14,7 @@ public class MainLoop {
 //        System.out.println(gridSize);
 //        GridButtonPanel cells = new GridButtonPanel(gridSize);
 //        cells.display();
-        Board board = new Board();
-        board.initializeFrame(this);
+        Board board = new Board(gridSize);
     }
 
     public void setGridSize(int gridSize) {
