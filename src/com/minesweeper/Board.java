@@ -17,11 +17,10 @@ public class Board extends JFrame implements Resettable {
 
     public Board(int gridSize) {
         super("Mines");
-
         // creates the center button grid by calling the GridButtonPanel constructor which creates it automatically
         this.gridSize = gridSize;
         gameGrid = new GridButtonPanel(gridSize);
-
+        gameGrid.placeBombsOnGrid();
         // creates the lower button pane for reset and give up buttons
         resetButton = new JButton("Reset");
         giveUpButton = new JButton("Give up?");
@@ -46,26 +45,16 @@ public class Board extends JFrame implements Resettable {
         // listeners for button action
         resetButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                reset();
-            }
+            public void actionPerformed(ActionEvent e) {reset();}
         });
         giveUpButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                showAnswer();
-            }
+            public void actionPerformed(ActionEvent e) {showAnswer();}
         });
     }
 
     @Override
-    public void reset() {
-        System.out.println("reset"); // for testing
-        // maybe call reset on grid which will call reset on all buttons
-    }
+    public void reset() {gameGrid.reset();}
 
-    public void showAnswer() {
-        System.out.println("ans"); // for testing
-        // probably sth similar to reset but w/out the starting new game and w/ showing the bombs? reveal all?
-    }
+    public void showAnswer() {gameGrid.showAnswer();}
 }
